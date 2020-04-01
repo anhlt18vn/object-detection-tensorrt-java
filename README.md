@@ -15,4 +15,4 @@ To run the demo:
    - arg[0] path to the generated yolov3.trt file.
    - arg[1] path to the video file (e.g video.mp4)
    
-[Demo](https://www.youtube.com/watch?v=RGnpiJWMPN8)
+[Demo on Youtube](https://www.youtube.com/watch?v=RGnpiJWMPN8)
