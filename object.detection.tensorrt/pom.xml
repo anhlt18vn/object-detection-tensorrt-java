@@ -16,9 +16,10 @@
         <nd4j.version>1.0.0-beta6</nd4j.version>
         <sf4j.version>1.7.26</sf4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jar.fileName>tensorr-yolov3demo</jar.fileName>
+        <jar.libDir>libs/</jar.libDir>
         <!--suppress UnresolvedMavenProperty -->
-        <jar.fileName>${project.groupId}.${project.artifactId}.${project.version}</jar.fileName>
-
+        <jar.outputDir>${HOME}/build/${project.groupId}.${project.artifactId}</jar.outputDir>
     </properties>
 
 
@@ -35,7 +36,44 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <!--Copy all dependencies to  -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.1</version>
+
+                <configuration>
+                    <outputDirectory>${jar.outputDir}</outputDirectory>
+
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+
+
+                    <archive>
+                        <manifest>
+                            <mainClass>tub.ods.DemoYolov3</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <!-- bind to the packaging phase -->
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+            </plugin>
+
         </plugins>
+
+
     </build>
 
 
@@ -71,5 +109,6 @@
         </dependency>
 
     </dependencies>
+
 
 </project>
